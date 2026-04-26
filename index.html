@@ -19,7 +19,7 @@
         <li><a href="#story">Our Story</a></li>
         <li><a href="#details">Details</a></li>
         <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#rsvp">RSVP</a></li>
+        <li><a href="rsvp.html">RSVP</a></li>
       </ul>
     </div>
   </nav>
@@ -102,7 +102,7 @@
           <p class="detail-time">Saturday</p>
           <p class="detail-venue">Save the Date</p>
           <p class="detail-address">Please RSVP by<br/>October 1, 2026</p>
-          <a class="detail-link" href="#rsvp">RSVP Now →</a>
+          <a class="detail-link" href="rsvp.html">RSVP Now →</a>
         </div>
 
         <div class="detail-card">
@@ -137,69 +137,6 @@
         <div class="gallery-item g5"><div class="gallery-placeholder"><span>&#128248;</span></div></div>
         <div class="gallery-item g6"><div class="gallery-placeholder"><span>&#128248;</span></div></div>
       </div>
-    </div>
-  </section>
-
-  <!-- RSVP -->
-  <section id="rsvp">
-    <div class="container rsvp-container">
-      <h2 class="section-title">RSVP</h2>
-      <div class="divider"><span></span><span class="diamond">◆</span><span></span></div>
-      <p class="section-sub">Please respond by <strong>October 1, 2026</strong></p>
-
-      <form class="rsvp-form" id="rsvpForm" novalidate>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="fname">First Name</label>
-            <input type="text" id="fname" name="fname" placeholder="Priya" required />
-          </div>
-          <div class="form-group">
-            <label for="lname">Last Name</label>
-            <input type="text" id="lname" name="lname" placeholder="Sharma" required />
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" placeholder="priya@example.com" required />
-        </div>
-
-        <div class="form-group">
-          <label>Will you be attending?</label>
-          <div class="radio-group">
-            <label class="radio-label">
-              <input type="radio" name="attending" value="yes" required /> Joyfully accepts
-            </label>
-            <label class="radio-label">
-              <input type="radio" name="attending" value="no" /> Regretfully declines
-            </label>
-          </div>
-        </div>
-
-        <div class="form-group" id="guestCountGroup">
-          <label for="guests">Number of Guests (including yourself)</label>
-          <select id="guests" name="guests">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="dietary">Dietary Requirements</label>
-          <input type="text" id="dietary" name="dietary" placeholder="Vegetarian, gluten-free, allergies…" />
-        </div>
-
-        <div class="form-group">
-          <label for="message">A Note for the Couple <span class="optional">(optional)</span></label>
-          <textarea id="message" name="message" rows="3" placeholder="We'd love to hear from you!"></textarea>
-        </div>
-
-        <button type="submit" class="btn-submit">Send RSVP</button>
-        <p class="form-success" id="formSuccess">Thank you! We can't wait to celebrate with you. &#128149;</p>
-        <p class="form-error" id="formError">Oops — please fill in all required fields.</p>
-      </form>
     </div>
   </section>
 
