@@ -583,6 +583,7 @@ body {
 .rsvp-banner .hero-pre { color: var(--sage); }
 .rsvp-banner .hero-date { color: rgba(250,246,240,0.5); }
 
+.honeypot { display: none; }
 .nav-monogram { text-decoration: none; }
 .nav-active { color: var(--gold-dark) !important; }
 

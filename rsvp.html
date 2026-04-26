@@ -38,7 +38,9 @@
       <div class="divider"><span></span><span class="diamond">◆</span><span></span></div>
       <p class="section-sub">Please respond by <strong>October 1, 2026</strong></p>
 
-      <form class="rsvp-form" id="rsvpForm" novalidate>
+      <form class="rsvp-form" id="rsvpForm" name="rsvp" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="rsvp" />
+        <p class="honeypot"><label>Don't fill this out: <input name="bot-field" /></label></p>
         <div class="form-row">
           <div class="form-group">
             <label for="fname">First Name</label>

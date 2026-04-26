@@ -125,11 +125,27 @@ if (form) {
       return;
     }
 
-    // In production, replace this with a real form submission (e.g. Formspree, Netlify Forms)
-    console.log('RSVP submitted:', { fname, lname, email, attending, guests: form.guests?.value, dietary: form.dietary.value, message: form.message.value });
+    const submitBtn = form.querySelector('.btn-submit');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
 
-    form.reset();
-    guestGroup.style.display = 'flex';
-    successMsg.style.display = 'block';
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString(),
+    })
+      .then(() => {
+        form.reset();
+        guestGroup.style.display = 'flex';
+        successMsg.style.display = 'block';
+      })
+      .catch(() => {
+        errorMsg.textContent = 'Something went wrong — please try again or email us directly.';
+        errorMsg.style.display = 'block';
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send RSVP';
+      });
   });
 }
