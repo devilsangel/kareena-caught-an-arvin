@@ -5,7 +5,7 @@ if (window.location.pathname.includes('/summon')) {
 }
 
 // Countdown to November 14, 2026 — only runs on pages with countdown elements
-const weddingDate = new Date('2026-11-14T16:00:00');
+const weddingDate = new Date('2027-01-11T16:00:00');
 const daysEl    = document.getElementById('days');
 const hoursEl   = document.getElementById('hours');
 const minutesEl = document.getElementById('minutes');
