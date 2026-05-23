@@ -109,6 +109,7 @@ if (form) {
   const guestGroup = document.getElementById('guestCountGroup');
   const successMsg = document.getElementById('formSuccess');
   const errorMsg   = document.getElementById('formError');
+  const submissionName = document.getElementById('submissionName');
 
   attendingRadios.forEach(radio => {
     radio.addEventListener('change', () => {
@@ -134,6 +135,8 @@ if (form) {
     const submitBtn = form.querySelector('.btn-submit');
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending…';
+
+    submissionName.value = `${fname} ${lname}`.trim();
 
     fetch('/', {
       method: 'POST',
