@@ -54,9 +54,6 @@
         >
           <input type="hidden" name="form-name" value="rsvp" />
           <input type="hidden" name="name" id="submissionName" />
-          <p class="honeypot">
-            <label>Don't fill this out: <input name="bot-field" /></label>
-          </p>
           <div class="form-row">
             <div class="form-group">
               <label for="fname">First Name</label>
@@ -114,6 +111,9 @@
             ></textarea>
           </div>
 
+          <p class="honeypot">
+            <label>Don't fill this out: <input name="bot-field" /></label>
+          </p>
           <button type="submit" class="btn-submit">Send RSVP</button>
           <p class="form-success" id="formSuccess">
             Thank you! We can't wait to celebrate with you. &#128149;
