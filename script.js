@@ -172,11 +172,12 @@ const inviteeList = [
 ];
 
 function findInvitee(firstName, lastName) {
-  const firstLower = firstName.toLowerCase();
-  const lastLower  = lastName.toLowerCase();
+  const normalize  = s => s.toLowerCase().replace(/\./g, '');
+  const firstLower = normalize(firstName);
+  const lastLower  = normalize(lastName);
 
   function nameMatches(name) {
-    const n = name.toLowerCase();
+    const n = normalize(name);
     if (!lastLower) return n.startsWith(firstLower);
     return n.startsWith(firstLower) && n.includes(lastLower);
   }
