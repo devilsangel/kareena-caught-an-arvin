@@ -103,32 +103,99 @@ document.querySelectorAll('.timeline-card, .detail-card, .gallery-item, .dress-c
 });
 
 // ─── INVITEE LIST ────────────────────────────────────────────────────────────
-// Edit this array to add guests and their families before going live.
-// "primary" is the name used for lookup (case-insensitive, matches full name
-// or either part). "family" lists every person in that household.
+// Each entry: "primary" is the lookup name (case-insensitive).
+// "family" lists every person shown as a checkbox in step 2.
 const inviteeList = [
-  {
-    primary: 'Thomas George',
-    family: ['Thomas George', 'Mary George', 'Alex George'],
-  },
-  {
-    primary: 'Priya Nair',
-    family: ['Priya Nair', 'Suresh Nair'],
-  },
-  {
-    primary: 'James Mathew',
-    family: ['James Mathew', 'Anita Mathew', 'Rohan Mathew', 'Sana Mathew'],
-  },
+  { primary: 'John Mathew',              family: ['John Mathew', 'Lizy Mathew'] },
+  { primary: 'Jason Mathew',             family: ['Jason Mathew', 'Manju Mathew', 'Emmett Mathew'] },
+  { primary: 'Justin Mathew',            family: ['Justin Mathew'] },
+  { primary: 'Jose Mundanchira',         family: ['Jose Mundanchira', 'Molly Mundanchira'] },
+  { primary: 'Christy Mundanchira',      family: ['Christy Mundanchira'] },
+  { primary: 'George Mundanchira',       family: ['George Mundanchira'] },
+  { primary: 'Shaji Daniel',             family: ['Shaji Daniel', 'Shali Daniel'] },
+  { primary: 'Shaun Daniel',             family: ['Shaun Daniel', 'Liya Daniel', 'Isabella Daniel'] },
+  { primary: 'Sherin Daniel',            family: ['Sherin Daniel'] },
+  { primary: 'Mathew T. Thomas',         family: ['Mathew T. Thomas', 'Nancy Thomas'] },
+  { primary: 'Joshua Thomas',            family: ['Joshua Thomas'] },
+  { primary: 'Alisha Thomas',            family: ['Alisha Thomas'] },
+  { primary: 'Varsha Thomas',            family: ['Varsha Thomas'] },
+  { primary: 'Kunjukunju Johnson',       family: ['Kunjukunju Johnson', 'Sarah Johnson'] },
+  { primary: 'Sheena Johnson',           family: ['Sheena Johnson'] },
+  { primary: 'Jeffrey Johnson',          family: ['Jeffrey Johnson'] },
+  { primary: 'Lijo George',              family: ['Lijo George', 'Soja George'] },
+  { primary: 'Sijo George',             family: ['Sijo George', 'Princy Sijo'] },
+  { primary: 'Sunil Samuel',             family: ['Sunil Samuel', 'Selva Samuel'] },
+  { primary: 'Jenna Samuel',             family: ['Jenna Samuel'] },
+  { primary: 'Joel Samuel',              family: ['Joel Samuel'] },
+  { primary: 'Wilson John',              family: ['Wilson John', 'Sunitha Wilson'] },
+  { primary: 'Hannah Wilson',            family: ['Hannah Wilson'] },
+  { primary: 'Sunil George',             family: ['Sunil George', 'Asha George'] },
+  { primary: 'Sajosh Mathews',           family: ['Sajosh Mathews', 'Dijina Jacob Mathews'] },
+  { primary: 'William Donald Warner Jr.',family: ['William Donald Warner Jr.', 'Tracy Delaney'] },
+  { primary: 'Patrick Keffler',          family: ['Patrick Keffler', 'Rosemary Keffler'] },
+  { primary: 'Shoemaker',               family: ['Shoemaker', 'Karen Shoemaker'] },
+  { primary: 'Abraham Antony',           family: ['Abraham Antony', 'Shara Antony'] },
+  { primary: 'Christine Antony',         family: ['Christine Antony'] },
+  { primary: 'Dennis Cherian',           family: ['Dennis Cherian', 'Rachel John Cheriyan', 'Priya Cheriyan'] },
+  { primary: 'Richard Taylor II',        family: ['Richard Taylor II', 'Kate Fulton-John'] },
+  { primary: 'Brandon Owens',            family: ['Brandon Owens', 'Chrissy'] },
+  { primary: 'Mary',                     family: ['Mary'] },
+  { primary: 'Vinod Varghese',           family: ['Vinod Varghese', 'Jincy Varghese'] },
+  { primary: 'David Coutts',             family: ['David Coutts', 'Liya Coutts'] },
+  { primary: 'Wilson Kunjukunju',        family: ['Wilson Kunjukunju', 'Sherly Wilson'] },
+  { primary: 'Shon Mathew',              family: ['Shon Mathew', 'Divya Jacob'] },
+  { primary: 'Dhanya Jacob',             family: ['Dhanya Jacob', 'Susamma Jacob'] },
+  { primary: 'Zartasha',                 family: ['Zartasha'] },
+  { primary: 'Eldho Mathew',             family: ['Eldho Mathew', 'Bindu Mathew'] },
+  { primary: 'Sujith Kumar',             family: ['Sujith Kumar', 'Navaneetha Sujith'] },
+  { primary: 'Manu Sebastin',            family: ['Manu Sebastin', 'Megha Thomas'] },
+  { primary: 'Manoj',                    family: ['Manoj', 'Chinnu Manu'] },
+  { primary: 'Shaji',                    family: ['Shaji', 'Bindu'] },
+  { primary: 'Kichu',                    family: ['Kichu', 'Shalima'] },
+  { primary: 'Sujatha Mathew',           family: ['Sujatha Mathew'] },
+  { primary: 'Mathew Thomas Issac',      family: ['Mathew Thomas Issac', 'Maria Antony'] },
+  { primary: 'Athul John Mathew',        family: ['Athul John Mathew', 'Merlin Thomas Issac', 'M. B. Mathukutty', 'Binny John'] },
+  { primary: 'Kurian P. Issac',          family: ['Kurian P. Issac', 'Thara Kurian'] },
+  { primary: 'Arun Kurian',              family: ['Arun Kurian', 'Angela Susan'] },
+  { primary: 'Kiran Kurian',             family: ['Kiran Kurian', 'Neenu Eldhose'] },
+  { primary: 'Binu P. Issac',            family: ['Binu P. Issac', 'Beena Binu'] },
+  { primary: 'Eldhose Parekkara',        family: ['Eldhose Parekkara', 'Teena Varghese'] },
+  { primary: 'Vivek Babu',               family: ['Vivek Babu', 'Rossy'] },
+  { primary: 'Modi Wilson Puthuran',     family: ['Modi Wilson Puthuran', 'Anjana Merin Thomas'] },
+  { primary: 'Issac Puthuran',           family: ['Issac Puthuran', 'Jithu Rachel James'] },
+  { primary: 'Sanju Abey',               family: ['Sanju Abey'] },
+  { primary: 'Megha Sajeev',             family: ['Megha Sajeev'] },
+  { primary: 'Shawn Keecheril',          family: ['Shawn Keecheril', 'Jacob Keecheril', 'Neena Jacob'] },
+  { primary: 'Shreya Jacob',             family: ['Shreya Jacob', 'Alvin'] },
+  { primary: 'Paul Joseph',              family: ['Paul Joseph', 'Shoba Joseph', 'Jason Joseph', 'Justin Joseph'] },
+  { primary: 'Aji Abraham',              family: ['Aji Abraham', 'Resmi Abraham'] },
 ];
 
 function findInvitee(firstName, lastName) {
-  const fullLower  = `${firstName} ${lastName}`.trim().toLowerCase();
   const firstLower = firstName.toLowerCase();
   const lastLower  = lastName.toLowerCase();
-  return inviteeList.find(inv => {
-    const p = inv.primary.toLowerCase();
-    return p === fullLower || p.startsWith(firstLower) || p.endsWith(lastLower);
-  });
+  const fullLower  = lastName ? `${firstLower} ${lastLower}` : firstLower;
+
+  // 1. Exact full-name match
+  let match = inviteeList.find(inv => inv.primary.toLowerCase() === fullLower);
+  if (match) return match;
+
+  // 2. First name alone matches the entire primary (single-name invitees)
+  if (!lastName) {
+    match = inviteeList.find(inv => inv.primary.toLowerCase() === firstLower);
+    if (match) return match;
+  }
+
+  // 3. Primary starts with first name AND ends with last name
+  if (lastName) {
+    match = inviteeList.find(inv => {
+      const p = inv.primary.toLowerCase();
+      return p.startsWith(firstLower) && p.endsWith(lastLower);
+    });
+    if (match) return match;
+  }
+
+  return null;
 }
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -154,8 +221,8 @@ if (nameForm) {
 
     const fname = nameForm.fname.value.trim();
     const lname = nameForm.lname.value.trim();
-    if (!fname || !lname) {
-      nameError.textContent = 'Please enter your first and last name.';
+    if (!fname) {
+      nameError.textContent = 'Please enter your name.';
       nameError.style.display = 'block';
       return;
     }
