@@ -603,6 +603,42 @@ body {
 }
 .rsvp-back a:hover { color: var(--gold); }
 
+/* ===== Registry ===== */
+#registry {
+  padding: 80px 0;
+  background: #1f1c19;
+  text-align: center;
+}
+#registry .section-title { color: var(--ivory); }
+#registry .section-sub {
+  color: rgba(250,246,240,0.6);
+  max-width: 480px;
+  margin: 0 auto 36px;
+}
+#registry .divider span:first-child,
+#registry .divider span:last-child { background: var(--gold); opacity: 0.4; }
+#registry .divider .diamond { color: var(--gold); }
+.registry-container { max-width: 600px; }
+
+.btn-registry {
+  display: inline-block;
+  padding: 14px 56px;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  background: var(--gold);
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background var(--transition), transform var(--transition);
+}
+.btn-registry:hover {
+  background: var(--gold-dark);
+  transform: translateY(-2px);
+}
+
 /* ===== 2-Step RSVP ===== */
 @keyframes stepFadeIn {
   from { opacity: 0; transform: translateY(16px); }
