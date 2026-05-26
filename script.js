@@ -207,7 +207,8 @@ if (nameForm) {
   // Step 1: look up name
   nameForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    nameError.style.display = 'none';
+    nameError.style.display   = 'none';
+    successMsg.style.display  = 'none';
 
     const fname = nameForm.fname.value.trim();
     const lname = nameForm.lname.value.trim();
@@ -315,8 +316,13 @@ if (nameForm) {
     })
       .then(() => {
         rsvpForm.reset();
+        nameForm.reset();
+        step2.style.display = 'none';
+        step1.style.display = 'block';
+        nameError.style.display = 'none';
         successMsg.style.display = 'block';
-        backBtn.style.display    = 'none';
+        backBtn.style.display    = '';
+        step1.scrollIntoView({ behavior: 'smooth', block: 'start' });
       })
       .catch(() => {
         errorMsg.textContent = 'Something went wrong — please try again or email us directly.';
