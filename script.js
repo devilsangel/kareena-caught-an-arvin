@@ -171,22 +171,11 @@ const inviteeList = [
   { primary: 'Aji Abraham',              family: ['Aji Abraham', 'Resmi Abraham'] },
 ];
 
-function findInvitee(firstName, lastName) {
-  const firstLower = firstName.toLowerCase();
-  const lastLower  = lastName.toLowerCase();
-  const fullLower  = lastName ? `${firstLower} ${lastLower}` : firstLower;
-
-  function nameMatches(name) {
-    const n = name.toLowerCase();
-    if (n === fullLower) return true;
-    if (!lastName && n === firstLower) return true;
-    if (lastName && n.startsWith(firstLower) && n.endsWith(lastLower)) return true;
-    return false;
-  }
-
-  // Check primary name first, then any family member
+function findInvitee(fullName) {
+  const query = fullName.toLowerCase();
   return inviteeList.find(inv =>
-    nameMatches(inv.primary) || inv.family.some(member => nameMatches(member))
+    inv.primary.toLowerCase() === query ||
+    inv.family.some(member => member.toLowerCase() === query)
   );
 }
 // ─────────────────────────────────────────────────────────────────────────────
@@ -211,15 +200,14 @@ if (nameForm) {
     e.preventDefault();
     nameError.style.display = 'none';
 
-    const fname = nameForm.fname.value.trim();
-    const lname = nameForm.lname.value.trim();
-    if (!fname) {
+    const fullName = nameForm.fullname.value.trim();
+    if (!fullName) {
       nameError.textContent = 'Please enter your name.';
       nameError.style.display = 'block';
       return;
     }
 
-    const invitee = findInvitee(fname, lname);
+    const invitee = findInvitee(fullName);
     if (!invitee) {
       nameError.textContent =
         "We couldn't find your name on the guest list. Please double-check spelling or contact us.";
