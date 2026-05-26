@@ -176,26 +176,18 @@ function findInvitee(firstName, lastName) {
   const lastLower  = lastName.toLowerCase();
   const fullLower  = lastName ? `${firstLower} ${lastLower}` : firstLower;
 
-  // 1. Exact full-name match
-  let match = inviteeList.find(inv => inv.primary.toLowerCase() === fullLower);
-  if (match) return match;
-
-  // 2. First name alone matches the entire primary (single-name invitees)
-  if (!lastName) {
-    match = inviteeList.find(inv => inv.primary.toLowerCase() === firstLower);
-    if (match) return match;
+  function nameMatches(name) {
+    const n = name.toLowerCase();
+    if (n === fullLower) return true;
+    if (!lastName && n === firstLower) return true;
+    if (lastName && n.startsWith(firstLower) && n.endsWith(lastLower)) return true;
+    return false;
   }
 
-  // 3. Primary starts with first name AND ends with last name
-  if (lastName) {
-    match = inviteeList.find(inv => {
-      const p = inv.primary.toLowerCase();
-      return p.startsWith(firstLower) && p.endsWith(lastLower);
-    });
-    if (match) return match;
-  }
-
-  return null;
+  // Check primary name first, then any family member
+  return inviteeList.find(inv =>
+    nameMatches(inv.primary) || inv.family.some(member => nameMatches(member))
+  );
 }
 // ─────────────────────────────────────────────────────────────────────────────
 
