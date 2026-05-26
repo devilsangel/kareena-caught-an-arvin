@@ -228,21 +228,43 @@ if (nameForm) {
     inviteeNameInput.value = invitee.primary;
     step2Greeting.textContent = `Welcome, ${invitee.primary.split(' ')[0]}!`;
 
-    // Remove old checkboxes (keep the label)
-    const existingCheckboxes = familyCheckboxGroup.querySelectorAll('.checkbox-label');
-    existingCheckboxes.forEach(el => el.remove());
+    // Clear previous dynamic content
+    familyCheckboxGroup.querySelectorAll('.checkbox-label, .radio-group').forEach(el => el.remove());
 
-    invitee.family.forEach(member => {
-      const lbl = document.createElement('label');
-      lbl.className = 'checkbox-label';
-      const cb = document.createElement('input');
-      cb.type    = 'checkbox';
-      cb.value   = member;
-      cb.checked = true;
-      lbl.appendChild(cb);
-      lbl.appendChild(document.createTextNode(' ' + member));
-      familyCheckboxGroup.appendChild(lbl);
-    });
+    const isSolo = invitee.family.length === 1;
+    const groupLabel = familyCheckboxGroup.querySelector('label');
+
+    if (isSolo) {
+      groupLabel.textContent = 'Will you be attending?';
+      const radioGroup = document.createElement('div');
+      radioGroup.className = 'radio-group';
+      [['yes', 'Joyfully accepts'], ['no', 'Regretfully declines']].forEach(([val, text], i) => {
+        const lbl = document.createElement('label');
+        lbl.className = 'radio-label';
+        const rb = document.createElement('input');
+        rb.type    = 'radio';
+        rb.name    = 'solo-attending';
+        rb.value   = val;
+        rb.checked = i === 0;
+        lbl.appendChild(rb);
+        lbl.appendChild(document.createTextNode(' ' + text));
+        radioGroup.appendChild(lbl);
+      });
+      familyCheckboxGroup.appendChild(radioGroup);
+    } else {
+      groupLabel.textContent = 'Who will be attending?';
+      invitee.family.forEach(member => {
+        const lbl = document.createElement('label');
+        lbl.className = 'checkbox-label';
+        const cb = document.createElement('input');
+        cb.type    = 'checkbox';
+        cb.value   = member;
+        cb.checked = true;
+        lbl.appendChild(cb);
+        lbl.appendChild(document.createTextNode(' ' + member));
+        familyCheckboxGroup.appendChild(lbl);
+      });
+    }
 
     step1.style.display = 'none';
     step2.style.display = 'block';
@@ -271,10 +293,15 @@ if (nameForm) {
       return;
     }
 
-    const checked = Array.from(
-      familyCheckboxGroup.querySelectorAll('input[type="checkbox"]:checked')
-    ).map(cb => cb.value);
-    familyAttendingInput.value = checked.join(', ');
+    const soloRadio = familyCheckboxGroup.querySelector('input[name="solo-attending"]:checked');
+    if (soloRadio) {
+      familyAttendingInput.value = soloRadio.value === 'yes' ? inviteeNameInput.value : 'Not attending';
+    } else {
+      const checked = Array.from(
+        familyCheckboxGroup.querySelectorAll('input[type="checkbox"]:checked')
+      ).map(cb => cb.value);
+      familyAttendingInput.value = checked.join(', ');
+    }
 
     const submitBtn = rsvpForm.querySelector('.btn-submit');
     submitBtn.disabled    = true;
