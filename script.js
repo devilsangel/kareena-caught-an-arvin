@@ -145,13 +145,13 @@ const inviteeList = [
   { primary: 'Wilson Kunjukunju',        family: ['Wilson Kunjukunju', 'Sherly Wilson'] },
   { primary: 'Shon Mathew',              family: ['Shon Mathew', 'Divya Jacob'] },
   { primary: 'Dhanya Jacob',             family: ['Dhanya Jacob', 'Susamma Jacob'] },
-  { primary: 'Zartasha',                 family: ['Zartasha'] },
+  { primary: 'Zartasha Khan',                 family: ['Zartasha Khan'] },
   { primary: 'Eldho Mathew',             family: ['Eldho Mathew', 'Bindu Mathew'] },
   { primary: 'Sujith Kumar',             family: ['Sujith Kumar', 'Navaneetha Sujith'] },
   { primary: 'Manu Sebastin',            family: ['Manu Sebastin', 'Megha Thomas'] },
-  { primary: 'Manoj',                    family: ['Manoj', 'Chinnu Manu'] },
-  { primary: 'Shaji',                    family: ['Shaji', 'Bindu'] },
-  { primary: 'Kichu',                    family: ['Kichu', 'Shalima'] },
+  { primary: 'Manoj Thomas P',                    family: ['Manoj Thomas P', 'Chinnu Manu'] },
+  { primary: 'Shaji Kunjumon',                    family: ['Shaji Kunjumon', 'Bindu'] },
+  { primary: 'Kichu Sasidharan S.',                    family: ['Kichu Sasidharan S.', 'Shalima Kichu'] },
   { primary: 'Sujatha Mathew',           family: ['Sujatha Mathew'] },
   { primary: 'Mathew Thomas Issac',      family: ['Mathew Thomas Issac', 'Maria Antony'] },
   { primary: 'Athul John Mathew',        family: ['Athul John Mathew', 'Merlin Thomas Issac', 'M. B. Mathukutty', 'Binny John'] },
@@ -169,6 +169,7 @@ const inviteeList = [
   { primary: 'Shreya Jacob',             family: ['Shreya Jacob', 'Alvin'] },
   { primary: 'Paul Joseph',              family: ['Paul Joseph', 'Shoba Joseph', 'Jason Joseph', 'Justin Joseph'] },
   { primary: 'Aji Abraham',              family: ['Aji Abraham', 'Resmi Abraham'] },
+  { primary: 'Dinesh Thamby Ambookan', family: ['Dinesh Thamby Ambookan', 'Neethu James'] },
 ];
 
 function findInvitee(firstName, lastName) {
