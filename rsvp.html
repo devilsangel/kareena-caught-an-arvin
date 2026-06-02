@@ -36,97 +36,132 @@
     <!-- RSVP Form -->
     <section id="rsvp">
       <div class="container rsvp-container">
-        <!-- <h2 class="section-title">Will you join us?</h2> -->
-        <h2 class="section-title">Coming Soon!</h2>
+        <h2 class="section-title">Will you join us?</h2>
         <div class="divider">
           <span></span><span class="diamond">◆</span><span></span>
         </div>
-        <!-- <p class="section-sub">
-          Please respond by <strong>August 1, 2026</strong>
-        </p>
 
-        <form
-          class="rsvp-form"
-          id="rsvpForm"
-          name="rsvp"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-          novalidate
-        >
-          <input type="hidden" name="form-name" value="rsvp" />
-          <input type="hidden" name="name" id="submissionName" />
-          <div class="form-row">
-            <div class="form-group">
-              <label for="fname">First Name</label>
-              <input type="text" id="fname" name="fname" required />
-            </div>
-            <div class="form-group">
-              <label for="lname">Last Name</label>
-              <input type="text" id="lname" name="lname" required />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" required />
-          </div>
-
-          <div class="form-group">
-            <label>Will you be attending?</label>
-            <div class="radio-group">
-              <label class="radio-label">
+        <!-- Step 1: Name lookup -->
+        <div class="rsvp-step" id="step1">
+          <p class="section-sub">
+            Please respond by <strong>August 1, 2026</strong>
+          </p>
+          <form class="rsvp-form" id="nameForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name</label>
                 <input
-                  type="radio"
-                  name="attending"
-                  value="yes"
+                  type="text"
+                  id="fname"
+                  name="fname"
+                  autocomplete="given-name"
                   required
-                  checked
                 />
-                Joyfully accepts
-              </label>
-              <label class="radio-label">
-                <input type="radio" name="attending" value="no" /> Regretfully
-                declines
-              </label>
+              </div>
+              <div class="form-group">
+                <label for="lname"
+                  >Last Name <span class="optional">(optional)</span></label
+                >
+                <input
+                  type="text"
+                  id="lname"
+                  name="lname"
+                  autocomplete="family-name"
+                />
+              </div>
             </div>
-          </div>
+            <button type="submit" class="btn-submit">Continue →</button>
+            <p class="form-error" id="nameError">
+              We couldn't find your name on the guest list. Please double-check
+              spelling or
+              <a href="mailto:kareena.arvin2027@gmail.com">contact us</a>.
+            </p>
+            <p class="form-success" id="formSuccess">
+              Thank you! We can't wait to celebrate with you. &#128149;
+            </p>
+          </form>
+        </div>
 
-          <div class="form-group" id="guestCountGroup">
-            <label for="guests">Number of Guests (including yourself)</label>
-            <select id="guests" name="guests">
-              <option value="1">1</option>
-              <option value="2">2</option>
-            </select>
-          </div>
+        <!-- Step 2: Family selection -->
+        <div class="rsvp-step" id="step2" style="display: none">
+          <p class="step2-greeting" id="step2Greeting"></p>
+          <p class="section-sub">Please let us know who will be joining us.</p>
+          <form
+            class="rsvp-form"
+            id="rsvpForm"
+            name="rsvp"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            novalidate
+          >
+            <input type="hidden" name="form-name" value="rsvp" />
+            <input type="hidden" name="invitee-name" id="inviteeName" />
+            <input type="hidden" name="family-attending" id="familyAttending" />
+            <p class="honeypot">
+              <label>Don't fill this out: <input name="bot-field" /></label>
+            </p>
 
-          <div class="form-group">
-            <label for="message"
-              >A Note for the Couple
-              <span class="optional">(optional)</span></label
-            >
-            <textarea
-              id="message"
-              name="message"
-              rows="3"
-              placeholder="We'd love to hear from you!"
-            ></textarea>
-          </div>
+            <div class="form-group" id="familyCheckboxGroup">
+              <label>Who will be attending?</label>
+              <!-- Populated dynamically by JS -->
+            </div>
 
-          <p class="honeypot">
-            <label>Don't fill this out: <input name="bot-field" /></label>
-          </p>
-          <button type="submit" class="btn-submit">Send RSVP</button>
-          <p class="form-success" id="formSuccess">
-            Thank you! We can't wait to celebrate with you. &#128149;
-          </p>
-          <p class="form-error" id="formError">
-            Oops — please fill in all required fields.
-          </p>
-        </form> -->
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+
+            <div class="form-group">
+              <label for="message"
+                >A Note for the Couple
+                <span class="optional">(optional)</span></label
+              >
+              <textarea
+                id="message"
+                name="message"
+                rows="3"
+                placeholder="We'd love to hear from you!"
+              ></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn-submit">Send RSVP</button>
+              <button type="button" class="btn-back" id="backBtn">
+                ← Back
+              </button>
+            </div>
+            <p class="form-error" id="formError">
+              Oops — something went wrong. Please try again or
+              <a href="mailto:kareena.arvin2027@gmail.com">email us</a>.
+            </p>
+          </form>
+        </div>
 
         <p class="rsvp-back">
           <a href="../summon">← Back to the wedding site</a>
         </p>
+      </div>
+    </section>
+
+    <!-- Gift Registry -->
+    <section id="registry">
+      <div class="container registry-container">
+        <h2 class="section-title">Gift Registry</h2>
+        <div class="divider">
+          <span></span><span class="diamond">◆</span><span></span>
+        </div>
+        <p class="section-sub">
+          Your presence is the greatest gift of all. If you'd like to honour us
+          with a gift, we've set up a cash fund to help us as we begin our new
+          chapter together.
+        </p>
+        <a
+          href="https://www.paypal.com/paypalme/KareenaJoseph96"
+          class="btn-registry"
+          target="_blank"
+          rel="noopener noreferrer"
+          >View Registry →</a
+        >
       </div>
     </section>
 

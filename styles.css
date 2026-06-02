@@ -603,6 +603,113 @@ body {
 }
 .rsvp-back a:hover { color: var(--gold); }
 
+/* ===== Registry ===== */
+#registry {
+  padding: 80px 0;
+  background: #1f1c19;
+  text-align: center;
+}
+#registry .section-title { color: var(--ivory); }
+#registry .section-sub {
+  color: rgba(250,246,240,0.6);
+  max-width: 480px;
+  margin: 0 auto 36px;
+}
+#registry .divider span:first-child,
+#registry .divider span:last-child { background: var(--gold); opacity: 0.4; }
+#registry .divider .diamond { color: var(--gold); }
+.registry-container { max-width: 600px; }
+
+.btn-registry {
+  display: inline-block;
+  padding: 14px 56px;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  background: var(--gold);
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background var(--transition), transform var(--transition);
+}
+.btn-registry:hover {
+  background: var(--gold-dark);
+  transform: translateY(-2px);
+}
+
+/* ===== 2-Step RSVP ===== */
+@keyframes stepFadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.rsvp-step { animation: stepFadeIn 0.4s ease both; }
+
+.step2-greeting {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.6rem;
+  color: var(--ivory);
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+#familyCheckboxGroup {
+  gap: 12px;
+}
+#familyCheckboxGroup > label:first-of-type {
+  /* The static "Who will be attending?" label */
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(250,246,240,0.7);
+  margin-bottom: 4px;
+}
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: var(--ivory);
+  cursor: pointer;
+  letter-spacing: normal;
+  text-transform: none;
+}
+.checkbox-label input[type="checkbox"] {
+  accent-color: var(--gold);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.form-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.btn-back {
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(250,246,240,0.4);
+  cursor: pointer;
+  transition: color var(--transition);
+  padding: 4px 0;
+}
+.btn-back:hover { color: var(--gold); }
+
+.form-error a,
+.form-error a:visited {
+  color: inherit;
+  text-decoration: underline;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 860px) {
   .details-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
