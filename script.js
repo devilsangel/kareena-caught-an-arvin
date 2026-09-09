@@ -1,9 +1,3 @@
-// Show RSVP nav link only on the /summon route
-if (window.location.pathname.includes('/summon')) {
-  const navRsvp = document.getElementById('nav-rsvp');
-  if (navRsvp) navRsvp.style.display = '';
-}
-
 // Countdown to November 14, 2026 — only runs on pages with countdown elements
 const weddingDate = new Date('2027-01-11T16:00:00');
 const daysEl    = document.getElementById('days');
